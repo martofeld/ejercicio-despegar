@@ -2,25 +2,98 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/hotelPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        tools:text="$1000" />
-
-    <TextView
-        android:id="@+id/hotelName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/hotel_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toStartOf="@id/hotelPrice"
-        android:layout_toLeftOf="@id/hotelPrice"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/hotel_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/hotel_image"
+        android:background="@color/grey_with_transparency"
         android:maxLines="2"
-        tools:text="DoubleTree by Hilton Ocean Pnt Rsrt Spa North Miami Beach"/>
+        android:padding="4dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:text="DoubleTree by Hilton Ocean Pnt Rsrt Spa North Miami Beach" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/hotel_image"
+        android:background="@color/grey_with_transparency"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/hotel_stars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_star"
+            android:drawableLeft="@drawable/ic_star"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/hotel_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableLeft="@drawable/ic_location"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="17375 Collins Avenue" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/hotel_price_original"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="$1000" />
+
+            <TextView
+                android:id="@+id/hotel_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@id/hotel_price_original"
+                android:layout_toLeftOf="@id/hotel_price_original"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="$1000" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/hotel_amenities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@id/hotel_price_original"
+                android:layout_toLeftOf="@id/hotel_price_original"
+                tools:layout_height="48dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

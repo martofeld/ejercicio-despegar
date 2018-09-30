@@ -1,5 +1,7 @@
 package com.mfeldsztejn.despegar.repositories;
 
+import com.mfeldsztejn.despegar.dtos.APIError;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,7 +19,7 @@ public class DefaultCallback<T> implements Callback<T> {
         if (response.isSuccessful()){
             callback.onSuccess(response.body());
         } else {
-            // TODO?
+            callback.onFailure(new APIError(response.code(), response));
         }
     }
 

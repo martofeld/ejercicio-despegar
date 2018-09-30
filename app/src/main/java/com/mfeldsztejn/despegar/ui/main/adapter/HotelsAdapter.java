@@ -14,7 +14,7 @@ public class HotelsAdapter extends RecyclerView.Adapter<HotelViewHolder> {
 
     private List<Hotel> hotels;
 
-    public HotelsAdapter(List<Hotel> hotels){
+    public HotelsAdapter(List<Hotel> hotels) {
         this.hotels = hotels;
     }
 

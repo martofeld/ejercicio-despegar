@@ -1,6 +1,8 @@
 package com.mfeldsztejn.despegar.dtos;
 
-public class Price {
+import java.io.Serializable;
+
+public class Price implements Serializable {
     private Currency currency;
     private boolean finalPrice;
     private int base;
