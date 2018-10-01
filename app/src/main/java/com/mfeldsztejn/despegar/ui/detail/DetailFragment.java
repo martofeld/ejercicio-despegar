@@ -3,9 +3,7 @@ package com.mfeldsztejn.despegar.ui.detail;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +13,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,20 +26,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.Hotel;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
-import com.mfeldsztejn.despegar.events.AddToolbarEvent;
+import com.mfeldsztejn.despegar.events.FragmentTransactionEvent;
 import com.mfeldsztejn.despegar.ui.ExpandOnClickListener;
 import com.mfeldsztejn.despegar.ui.detail.adapter.ReviewsAdapter;
 import com.mfeldsztejn.despegar.ui.main.adapter.AmenitiesAdapter;
+import com.mfeldsztejn.despegar.ui.picture.PictureFragment;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.Collections;
 
 public class DetailFragment extends Fragment implements View.OnClickListener {
 
@@ -54,6 +50,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     private DetailViewModel viewModel;
     private TextView description;
     private ImageView location;
+    private ImageView headerImage;
 
     public static DetailFragment newInstance(Hotel hotel) {
         Bundle args = new Bundle();
@@ -129,7 +126,7 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             starsContainer.addView(imageView);
         }
 
-        final ImageView headerImage = view.findViewById(R.id.header_image);
+        headerImage = view.findViewById(R.id.header_image);
         headerImage.setOnClickListener(this);
 
         Glide.with(getContext())
@@ -184,7 +181,10 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.header_image:
-                // TODO: Open image full screen
+                EventBus.getDefault().post(
+                        new FragmentTransactionEvent(
+                                PictureFragment.newInstance(hotel.getMainPicture(), ViewCompat.getTransitionName(headerImage)),
+                                Collections.singletonList(headerImage)));
                 break;
         }
     }

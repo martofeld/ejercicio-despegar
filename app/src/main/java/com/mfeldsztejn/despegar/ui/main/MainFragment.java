@@ -44,8 +44,7 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.main_fragment, container, false);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
-        // Activity should already exist at this point
-        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle(R.string.app_name);
 
         recyclerView = view.findViewById(R.id.recyclerView);
         errorView = view.findViewById(R.id.error_view);

@@ -1,18 +1,15 @@
 package com.mfeldsztejn.despegar;
 
+import android.graphics.Picture;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.mfeldsztejn.despegar.dtos.Hotel;
-import com.mfeldsztejn.despegar.events.AddToolbarEvent;
 import com.mfeldsztejn.despegar.events.FragmentTransactionEvent;
-import com.mfeldsztejn.despegar.ui.detail.DetailFragment;
 import com.mfeldsztejn.despegar.ui.main.MainFragment;
-import com.mfeldsztejn.despegar.ui.main.adapter.HotelsAdapter;
+import com.mfeldsztejn.despegar.ui.picture.PictureFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -54,14 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         transaction
-                .replace(R.id.container, event.getFragment())
+                .add(R.id.container, event.getFragment())
                 .addToBackStack(BACKSTACK_KEY)
                 .commit();
-    }
-
-    @Subscribe
-    @SuppressWarnings("unused")
-    public void onAddToolbarEvent(AddToolbarEvent event) {
-        setSupportActionBar(event.getToolbar());
     }
 }
