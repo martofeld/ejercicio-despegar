@@ -45,7 +45,7 @@ import java.util.Arrays;
     /* default */ void bind(final Hotel hotel) {
         Glide.with(image.getContext())
                 .load(hotel.getMainPicture())
-                .apply(new RequestOptions().centerCrop())
+                .apply(RequestOptions.centerCropTransform().error(R.drawable.ic_image_error))
                 .into(image);
         ViewCompat.setTransitionName(image, image.getResources().getString(R.string.transition_name_template, hotel.getId(), "image"));
         name.setText(hotel.getName());

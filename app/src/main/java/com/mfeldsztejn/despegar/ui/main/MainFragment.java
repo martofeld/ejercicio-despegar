@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.mfeldsztejn.despegar.MainActivity;
 import com.mfeldsztejn.despegar.R;
@@ -25,6 +26,8 @@ import com.mfeldsztejn.despegar.ui.main.adapter.HotelsAdapter;
 import java.util.List;
 
 public class MainFragment extends Fragment {
+
+    private ProgressBar progressBar;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -57,6 +60,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Hotel> hotels) {
                 recyclerView.setAdapter(new HotelsAdapter(hotels));
+                progressBar.setVisibility(View.GONE);
             }
         });
         viewModel.getError().observe(this, new Observer<Throwable>() {
@@ -77,8 +81,12 @@ public class MainFragment extends Fragment {
                     });
                     errorView.setText(R.string.server_error);
                 }
+                progressBar.setVisibility(View.GONE);
             }
         });
+
+        progressBar = view.findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
         return view;
     }
 

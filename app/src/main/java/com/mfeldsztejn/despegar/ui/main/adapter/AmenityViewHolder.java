@@ -33,6 +33,7 @@ public class AmenityViewHolder extends RecyclerView.ViewHolder {
             icon.setImageDrawable(ContextCompat.getDrawable(icon.getContext(), drawable));
         }
         text.setVisibility(showTitles ? View.VISIBLE : View.GONE);
+        container.getLayoutParams().width = showTitles ? RecyclerView.LayoutParams.MATCH_PARENT : RecyclerView.LayoutParams.WRAP_CONTENT;
         if (showTitles) {
             text.setText(amenity.getDescription());
             container.setGravity(Gravity.CENTER);

@@ -5,8 +5,6 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.mfeldsztejn.despegar.dtos.Hotel;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelResponse;
@@ -17,7 +15,6 @@ import com.mfeldsztejn.despegar.repositories.RetrofitHelper;
 public class DetailViewModel extends ViewModel implements DefaultCallback.Callback<HotelResponse> {
     private MutableLiveData<HotelExpansion> hotelLiveData = new MutableLiveData<>();
     private Hotel hotel;
-    private GoogleMap googleMap;
 
     public void setHotel(Hotel hotel) {
         // Only set hotel once

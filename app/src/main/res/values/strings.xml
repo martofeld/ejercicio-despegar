@@ -6,8 +6,10 @@
     <string name="retry">Reintentar</string>
     <string name="generic_error">Lo sentimos, ocurrio un error inesperado</string>
     <string name="server_error">Lo sentimos, ocurrio un error con la informacion</string>
-    <string name="description">Description</string>
+    <string name="description">Descripcion</string>
     <string name="amenities">Amenities</string>
     <string name="location">Ubicacion</string>
     <string name="reviews">Comentarios</string>
+    <string name="no_reviews">Lo sentimos, no hay comentarios para este hotel</string>
+    <string name="hotel_price">Precio por noche: %1$s%2$d</string>
 </resources>

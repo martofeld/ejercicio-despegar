@@ -9,6 +9,7 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,10 +20,12 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.hotel.Review;
+import com.mfeldsztejn.despegar.ui.ExpandOnClickListener;
 
 /* default */ class ReviewViewHolder extends RecyclerView.ViewHolder {
 
     private static final String FLAG_IDENTIFIER_FORMAT = "ic_%s_flag";
+    private static final int REVIEW_MAX_LINES = 2;
 
     private TextView title, positiveReview, negativeReview, user;
 
@@ -68,5 +71,8 @@ import com.mfeldsztejn.despegar.dtos.hotel.Review;
     private void configureTextView(TextView textView, String text) {
         textView.setVisibility(text == null || text.isEmpty() ? View.GONE : View.VISIBLE);
         textView.setText(text);
+        textView.setOnClickListener(new ExpandOnClickListener(REVIEW_MAX_LINES));
+        textView.setMaxLines(REVIEW_MAX_LINES);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
     }
 }

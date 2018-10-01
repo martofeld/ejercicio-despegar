@@ -16,8 +16,6 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:expandedTitleMarginEnd="8dp"
-            app:expandedTitleMarginStart="8dp"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -43,14 +41,38 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
         android:background="@color/white"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hotel_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/detail_fragment_sides_margin"
+                android:layout_marginRight="@dimen/detail_fragment_sides_margin"
+                android:textSize="24sp"
+                tools:text="Nombre del hotel" />
+
+            <TextView
+                android:id="@+id/hotel_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/detail_fragment_sides_margin"
+                android:layout_marginRight="@dimen/detail_fragment_sides_margin"
+                tools:text="Precio por noche: $1000"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/hotel_stars_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
 
             <TextView
                 style="@style/Title"
@@ -62,15 +84,13 @@
                 android:id="@+id/hotel_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/detail_fragment_sides_margin"
+                android:layout_marginRight="@dimen/detail_fragment_sides_margin"
                 android:ellipsize="end"
                 android:maxLines="5"
                 tools:text="@tools:sample/lorem/random" />
 
-            <View
-                style="@style/Divider"/>
+            <View style="@style/Divider" />
 
             <TextView
                 style="@style/Title"
@@ -97,47 +117,46 @@
             <ImageView
                 android:id="@+id/hotel_location"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="@dimen/map_height" />
 
             <TextView
                 android:id="@+id/hotel_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/detail_fragment_sides_margin"
+                android:layout_marginTop="@dimen/detail_fragment_sides_margin"
+                android:layout_marginRight="@dimen/detail_fragment_sides_margin"
                 android:background="@color/white"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_location"
                 android:drawableLeft="@drawable/ic_location"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
                 tools:text="Hotel address" />
 
-
-            <LinearLayout
-                android:id="@+id/hotel_reviews_container"
-                android:orientation="vertical"
+            <View
+                style="@style/Divider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="1dp" />
 
-                <View
-                    style="@style/Divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+            <TextView
+                style="@style/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reviews" />
 
-                <TextView
-                    style="@style/Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reviews" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/hotel_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/hotel_reviews"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/hotel_reviews_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_reviews"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </LinearLayout>
 

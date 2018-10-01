@@ -22,6 +22,10 @@ public class Hotel implements Serializable {
     }
 
     public String getMainPicture() {
+        if (mainPicture.startsWith("http://")) {
+            // Should always use HTTPS to avoid having to change Android Defaults of not allowing HTTP
+            mainPicture = mainPicture.replace("http://", "https://");
+        }
         return mainPicture;
     }
 
