@@ -1,7 +1,7 @@
 package com.mfeldsztejn.despegar.ui.detail;
 
 
-import android.arch.lifecycle.Observer;
+import android.animation.LayoutTransition;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -12,6 +12,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -27,7 +28,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.Hotel;
-import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
 import com.mfeldsztejn.despegar.events.FragmentTransactionEvent;
 import com.mfeldsztejn.despegar.ui.main.adapter.AmenitiesAdapter;
 import com.mfeldsztejn.despegar.ui.picture.PictureFragment;
@@ -91,6 +91,9 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        LinearLayout scroll = view.findViewById(R.id.body_container);
+        scroll.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         setUpToolbar(view);
 
         preload(view);

@@ -2,13 +2,21 @@ package com.mfeldsztejn.despegar.ui.detail;
 
 import android.arch.lifecycle.Observer;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
 import com.mfeldsztejn.despegar.ui.ExpandOnClickListener;
@@ -55,10 +63,19 @@ class SuccessObserver implements Observer<HotelExpansion> {
         fragment.getActivity().getWindowManager().getDefaultDisplay().getSize(point);
         String url = String.format(MAP_URL, latitude, longitude, point.x, height, latitude, longitude, fragment.getString(R.string.maps_key));
         ImageView location = v.findViewById(R.id.hotel_location);
-        fragment.loadImage(url, location);
+
+        ProgressBar pb = v.findViewById(R.id.hotel_location_placeholder);
+        pb.setVisibility(View.GONE);
+        loadImage(url, location, pb.getIndeterminateDrawable());
+
     }
 
-    public void cleanUp(){
-        this.fragment = null;
+
+    private void loadImage(String url, ImageView location, Drawable progressDrawable){
+        location.setVisibility(View.VISIBLE);
+        Glide.with(location.getContext())
+                .load(url)
+                .apply(RequestOptions.centerCropTransform().error(R.drawable.ic_image_error).placeholder(progressDrawable))
+                .into(location);
     }
 }
