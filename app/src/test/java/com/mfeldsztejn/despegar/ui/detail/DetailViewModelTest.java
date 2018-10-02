@@ -1,8 +1,6 @@
 package com.mfeldsztejn.despegar.ui.detail;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.mfeldsztejn.despegar.dtos.Hotel;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
@@ -11,25 +9,21 @@ import com.mfeldsztejn.despegar.dtos.hotel.HotelResponse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.robolectric.util.ReflectionHelpers;
-
-import static org.junit.Assert.*;
 
 public class DetailViewModelTest {
 
     private DetailViewModel viewModel;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         viewModel = Mockito.spy(new DetailViewModel());
         Mockito.doNothing().when(viewModel).requestHotel();
     }
 
     @Test
-    public void testSetHotel_shouldSetValue(){
+    public void testSetHotel_shouldSetValue() {
         Hotel mockHotel = Mockito.mock(Hotel.class);
         viewModel.setHotel(mockHotel);
 
@@ -40,7 +34,7 @@ public class DetailViewModelTest {
     }
 
     @Test
-    public void testSetHotel_shouldNotSetValueIfAlreadyExists(){
+    public void testSetHotel_shouldNotSetValueIfAlreadyExists() {
         Hotel mockHotel = Mockito.mock(Hotel.class);
         viewModel.setHotel(mockHotel);
 
@@ -55,7 +49,7 @@ public class DetailViewModelTest {
     }
 
     @Test
-    public void testOnRequestSuccess_shouldSetValueToLiveData(){
+    public void testOnRequestSuccess_shouldSetValueToLiveData() {
         MutableLiveData<HotelExpansion> liveData = Mockito.mock(MutableLiveData.class);
 
         ReflectionHelpers.setField(viewModel, "hotelLiveData", liveData);
@@ -70,7 +64,7 @@ public class DetailViewModelTest {
     }
 
     @Test
-    public void testOnRequestError_shouldSetValueToLiveData(){
+    public void testOnRequestError_shouldSetValueToLiveData() {
         MutableLiveData<Throwable> liveData = Mockito.mock(MutableLiveData.class);
 
         ReflectionHelpers.setField(viewModel, "errorLiveData", liveData);

@@ -29,7 +29,7 @@ public class AmenityViewHolderTest {
     private TextView titleTextViewMock;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         Mockito.doReturn(iconImageViewMock).when(itemView).findViewById(R.id.amenity_icon);
         Mockito.doReturn(titleTextViewMock).when(itemView).findViewById(R.id.amenity_text);
@@ -48,7 +48,7 @@ public class AmenityViewHolderTest {
         Drawable drawable = Mockito.mock(Drawable.class);
         Mockito.when(iconImageViewMock.getContext().getDrawable(1)).thenReturn(drawable);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,0);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 0);
         Mockito.doReturn(params).when(itemView).getLayoutParams();
 
         AmenityViewHolder viewHolder = new AmenityViewHolder(itemView);
@@ -74,7 +74,7 @@ public class AmenityViewHolderTest {
         Drawable drawable = Mockito.mock(Drawable.class);
         Mockito.when(iconImageViewMock.getContext().getDrawable(1)).thenReturn(drawable);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,0);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 0);
         Mockito.doReturn(params).when(itemView).getLayoutParams();
 
         AmenityViewHolder viewHolder = new AmenityViewHolder(itemView);

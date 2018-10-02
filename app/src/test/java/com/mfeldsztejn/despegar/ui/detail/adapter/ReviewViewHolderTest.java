@@ -3,22 +3,15 @@ package com.mfeldsztejn.despegar.ui.detail.adapter;
 import android.view.View;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.hotel.Review;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.stubbing.defaultanswers.ReturnsDeepStubs;
-
-import javax.annotation.meta.When;
-
-import static org.junit.Assert.*;
 
 public class ReviewViewHolderTest {
 

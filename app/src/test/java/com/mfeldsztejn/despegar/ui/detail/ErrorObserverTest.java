@@ -7,7 +7,6 @@ import android.widget.TextView;
 import com.mfeldsztejn.despegar.R;
 
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 public class ErrorObserverTest {

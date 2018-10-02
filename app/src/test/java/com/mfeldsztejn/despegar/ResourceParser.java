@@ -1,7 +1,6 @@
 package com.mfeldsztejn.despegar;
 
 import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
@@ -29,7 +28,7 @@ public class ResourceParser {
         final InputStream is = new FileInputStream(TEST_RESOURCES_LOCATION + fileName);
         final BufferedReader input = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")), 1024 * 8);
         String line;
-        while (( line = input.readLine() ) != null) {
+        while ((line = input.readLine()) != null) {
             contents.append(line);
         }
         input.close();

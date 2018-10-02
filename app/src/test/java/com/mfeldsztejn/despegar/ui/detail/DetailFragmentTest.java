@@ -2,12 +2,9 @@ package com.mfeldsztejn.despegar.ui.detail;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -23,23 +20,17 @@ import com.mfeldsztejn.despegar.ResourceParser;
 import com.mfeldsztejn.despegar.dtos.Hotel;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
 import com.mfeldsztejn.despegar.repositories.RetrofitHelper;
-import com.mfeldsztejn.despegar.ui.detail.adapter.ReviewsAdapter;
 import com.mfeldsztejn.despegar.ui.main.adapter.AmenitiesAdapter;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Answers;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.support.v4.SupportFragmentTestUtil;
 import org.robolectric.util.ReflectionHelpers;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -167,7 +158,7 @@ public class DetailFragmentTest {
     }
 
     @Test
-    public void testOnCreateView_usesCorrectLayout(){
+    public void testOnCreateView_usesCorrectLayout() {
         DetailFragment detailFragment = new DetailFragment();
 
         LayoutInflater inflater = Mockito.mock(LayoutInflater.class);
