@@ -153,8 +153,8 @@ public class DetailFragmentTest {
         Mockito.verify(detailFragment).loadImage(hotel.getMainPicture(), headerImageView);
 
         // Check is registered to callbacks
-        Mockito.verify(hotelLiveData).observe(detailFragment, Mockito.any(SuccessObserver.class));
-        Mockito.verify(errorLiveData).observe(detailFragment, Mockito.any(ErrorObserver.class));
+        Mockito.verify(hotelLiveData).observe(Mockito.eq(detailFragment), Mockito.any(SuccessObserver.class));
+        Mockito.verify(errorLiveData).observe(Mockito.eq(detailFragment), Mockito.any(ErrorObserver.class));
     }
 
     @Test

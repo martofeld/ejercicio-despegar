@@ -25,7 +25,7 @@ public class ReviewViewHolderTest {
 
     @Test
     public void testConstructor_findsAllViews() {
-        Mockito.doNothing().when(itemView).findViewById(Mockito.anyInt());
+        Mockito.doReturn(null).when(itemView).findViewById(Mockito.anyInt());
         new ReviewViewHolder(itemView);
 
         Mockito.verify(itemView, Mockito.times(4)).findViewById(Mockito.anyInt());
