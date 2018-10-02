@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewCompat;
@@ -42,10 +43,14 @@ import com.mfeldsztejn.despegar.ui.ExpandOnClickListener;
         configureTextView(positiveReview, review.getComments().getGood());
         configureTextView(negativeReview, review.getComments().getBad());
         configureTextView(user, review.getUser().getName());
-        @DrawableRes int flagDrawableResource
-                = user.getResources().getIdentifier(String.format(FLAG_IDENTIFIER_FORMAT, review.getUser().getCountry().toLowerCase()), "drawable", user.getContext().getPackageName());
-        Drawable flagDrawable = ContextCompat.getDrawable(user.getContext(), flagDrawableResource);
+        bindFlag(review.getUser().getCountry());
+    }
 
+    @VisibleForTesting
+    /* default */ void bindFlag(String country){
+        @DrawableRes int flagDrawableResource
+                = user.getResources().getIdentifier(String.format(FLAG_IDENTIFIER_FORMAT, country.toLowerCase()), "drawable", user.getContext().getPackageName());
+        Drawable flagDrawable = ContextCompat.getDrawable(user.getContext(), flagDrawableResource);
         // Normaly the flag would already be round and the required size
         Glide.with(user)
                 .load(flagDrawable)

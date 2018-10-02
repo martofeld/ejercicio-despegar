@@ -3,6 +3,7 @@ package com.mfeldsztejn.despegar.ui.detail;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 
 import com.mfeldsztejn.despegar.dtos.Hotel;
@@ -14,7 +15,15 @@ import com.mfeldsztejn.despegar.repositories.RetrofitHelper;
 
 public class DetailViewModel extends ViewModel implements DefaultCallback.Callback<HotelResponse> {
     private MutableLiveData<HotelExpansion> hotelLiveData = new MutableLiveData<>();
+    private MutableLiveData<Throwable> errorLiveData = new MutableLiveData<>();
     private Hotel hotel;
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        hotelLiveData = null;
+        errorLiveData = null;
+    }
 
     public void setHotel(Hotel hotel) {
         // Only set hotel once
@@ -24,7 +33,8 @@ public class DetailViewModel extends ViewModel implements DefaultCallback.Callba
         }
     }
 
-    private void requestHotel() {
+    @VisibleForTesting
+    /* default */ void requestHotel() {
         RetrofitHelper.create()
                 .create(DespegarRepository.class)
                 .hotel(hotel.getId())
@@ -38,11 +48,14 @@ public class DetailViewModel extends ViewModel implements DefaultCallback.Callba
 
     @Override
     public void onFailure(Throwable t) {
-        Log.e("TAG", "Error getting detail", t);
-//        TODO: hotelLiveData.setValue(hotel);
+        errorLiveData.setValue(t);
     }
 
     public LiveData<HotelExpansion> getHotel() {
         return hotelLiveData;
+    }
+
+    public LiveData<Throwable> getError() {
+        return errorLiveData;
     }
 }

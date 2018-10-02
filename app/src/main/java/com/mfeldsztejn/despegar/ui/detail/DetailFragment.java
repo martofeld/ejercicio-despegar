@@ -3,18 +3,16 @@ package com.mfeldsztejn.despegar.ui.detail;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.TransitionInflater;
@@ -31,8 +29,6 @@ import com.mfeldsztejn.despegar.R;
 import com.mfeldsztejn.despegar.dtos.Hotel;
 import com.mfeldsztejn.despegar.dtos.hotel.HotelExpansion;
 import com.mfeldsztejn.despegar.events.FragmentTransactionEvent;
-import com.mfeldsztejn.despegar.ui.ExpandOnClickListener;
-import com.mfeldsztejn.despegar.ui.detail.adapter.ReviewsAdapter;
 import com.mfeldsztejn.despegar.ui.main.adapter.AmenitiesAdapter;
 import com.mfeldsztejn.despegar.ui.picture.PictureFragment;
 
@@ -42,15 +38,13 @@ import java.util.Collections;
 
 public class DetailFragment extends Fragment implements View.OnClickListener {
 
-    private static final int DESCRIPTION_MAX_LINES = 5;
     private static final String HOTEL_KEY = "HOTEL_KEY";
-    private static final String MAP_URL = "https://maps.google.com/maps/api/staticmap?center=%f,%f&scale=4&zoom=17&size=%dx%d&markers=color:red%%7C%f,%f";
 
     private Hotel hotel;
     private DetailViewModel viewModel;
-    private TextView description;
-    private ImageView location;
     private ImageView headerImage;
+    private SuccessObserver successObserver;
+    private ErrorObserver errorObserver;
 
     public static DetailFragment newInstance(Hotel hotel) {
         Bundle args = new Bundle();
@@ -92,13 +86,24 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.detail_fragment, container, false);
+        return inflater.inflate(R.layout.detail_fragment, container, false);
+    }
 
-        CollapsingToolbarLayout toolbarLayout = view.findViewById(R.id.collapsing_toolbar);
-        toolbarLayout.setTitleEnabled(false);
-        toolbarLayout.setContentScrimColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        setUpToolbar(view);
 
-        Toolbar toolbar = toolbarLayout.findViewById(R.id.toolbar);
+        preload(view);
+
+        successObserver = new SuccessObserver(this);
+        viewModel.getHotel().observe(this, successObserver);
+
+        errorObserver = new ErrorObserver(this);
+        viewModel.getError().observe(this, errorObserver);
+    }
+
+    private void setUpToolbar(View view) {
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,19 +111,22 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
                 getActivity().onBackPressed();
             }
         });
+    }
 
+    private void preload(View view) {
+        // Name
         TextView name = view.findViewById(R.id.hotel_name);
         name.setText(hotel.getName());
-        ViewCompat.setTransitionName(name, name.getResources().getString(R.string.transition_name_template, hotel.getId(), "name"));
+        ViewCompat.setTransitionName(name, getContext().getString(R.string.transition_name_template, hotel.getId(), "name"));
 
+        // Price
         TextView price = view.findViewById(R.id.hotel_price);
-        price.setText(getString(R.string.hotel_price,
-                hotel.getPrice().getCurrency().getMask(),
-                hotel.getPrice().getBase()));
+        price.setText(getContext().getString(R.string.hotel_price, hotel.getPrice().getCurrency().getMask(), hotel.getPrice().getBase()));
 
+        // Stars
         LinearLayout starsContainer = view.findViewById(R.id.hotel_stars_container);
         Drawable starDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_star);
-        int padding = getResources().getDimensionPixelSize(R.dimen.detail_fragment_sides_margin) / 2;
+        int padding = getContext().getResources().getDimensionPixelSize(R.dimen.detail_fragment_sides_margin) / 2;
         for (int i = 0; i < hotel.getStars(); i++) {
             ImageView imageView = new ImageView(getContext());
             imageView.setImageDrawable(starDrawable);
@@ -126,55 +134,28 @@ public class DetailFragment extends Fragment implements View.OnClickListener {
             starsContainer.addView(imageView);
         }
 
+        // Image
         headerImage = view.findViewById(R.id.header_image);
+        ViewCompat.setTransitionName(headerImage, getContext().getString(R.string.transition_name_template, hotel.getId(), "image"));
         headerImage.setOnClickListener(this);
+        loadImage(hotel.getMainPicture(), headerImage);
 
-        Glide.with(getContext())
-                .load(hotel.getMainPicture())
-                .apply(RequestOptions.centerCropTransform().error(R.drawable.ic_image_error))
-                .into(headerImage);
-        ViewCompat.setTransitionName(headerImage, getResources().getString(R.string.transition_name_template, hotel.getId(), "image"));
-
+        // Amenities
         RecyclerView amenities = view.findViewById(R.id.hotel_amenities);
         amenities.setLayoutManager(new GridLayoutManager(getContext(), 2));
         amenities.setAdapter(new AmenitiesAdapter(hotel.getAmenities(), true));
 
+        // Address
         TextView address = view.findViewById(R.id.hotel_address);
         address.setText(hotel.getAddress());
+    }
 
-        description = view.findViewById(R.id.hotel_description);
-        description.setOnClickListener(new ExpandOnClickListener(DESCRIPTION_MAX_LINES));
-        description.setMaxLines(DESCRIPTION_MAX_LINES);
-
-        location = view.findViewById(R.id.hotel_location);
-
-        viewModel.getHotel().observe(this, new Observer<HotelExpansion>() {
-            @Override
-            public void onChanged(@Nullable HotelExpansion hotelExpansion) {
-                description.setText(hotelExpansion.getDescription());
-
-                RecyclerView reviews = getView().findViewById(R.id.hotel_reviews);
-                if (hotelExpansion.getReviews() == null) {
-                    getView().findViewById(R.id.hotel_reviews_empty).setVisibility(View.VISIBLE);
-                    reviews.setVisibility(View.GONE);
-                } else {
-                    reviews.setAdapter(new ReviewsAdapter(hotelExpansion.getReviews()));
-                    reviews.setLayoutManager(new LinearLayoutManager(getContext()));
-                }
-
-                double latitude = hotelExpansion.getGeoLocation().getLatitude();
-                double longitude = hotelExpansion.getGeoLocation().getLongitude();
-                int height = getResources().getDimensionPixelSize(R.dimen.map_height);
-                Point point = new Point();
-                getActivity().getWindowManager().getDefaultDisplay().getSize(point);
-                Glide.with(location.getContext())
-                        .load(String.format(MAP_URL, latitude, longitude, point.x, height, latitude, longitude))
-                        .apply(RequestOptions.centerCropTransform().error(R.drawable.ic_image_error))
-                        .into(location);
-            }
-        });
-
-        return view;
+    @VisibleForTesting
+    /* default */ void loadImage(String url, ImageView view) {
+        Glide.with(getContext())
+                .load(url)
+                .apply(RequestOptions.centerCropTransform().error(R.drawable.ic_image_error))
+                .into(view);
     }
 
     @Override

@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests{
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -30,9 +36,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
 
-    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
-
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.mockito:mockito-inline:2.+'
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "org.robolectric:shadows-supportv4:3.8"
+
 }
