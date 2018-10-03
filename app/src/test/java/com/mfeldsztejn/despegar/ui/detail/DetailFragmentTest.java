@@ -1,5 +1,6 @@
 package com.mfeldsztejn.despegar.ui.detail;
 
+import android.animation.LayoutTransition;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -121,6 +123,7 @@ public class DetailFragmentTest {
 
         View view = Mockito.mock(View.class);
 
+        LinearLayout container = Mockito.mock(LinearLayout.class);
         Toolbar toolbar = Mockito.mock(Toolbar.class);
         TextView nameTextView = Mockito.mock(TextView.class);
         TextView priceTextView = Mockito.mock(TextView.class);
@@ -129,6 +132,12 @@ public class DetailFragmentTest {
         ImageView headerImageView = Mockito.mock(ImageView.class);
         LinearLayout starsLinearLayout = Mockito.mock(LinearLayout.class);
 
+        LayoutTransition layoutTransition = Mockito.mock(LayoutTransition.class);
+
+        Mockito.doNothing().when(layoutTransition).enableTransitionType(Mockito.anyInt());
+        Mockito.doReturn(layoutTransition).when(container).getLayoutTransition();
+
+        Mockito.doReturn(container).when(view).findViewById(R.id.body_container);
         Mockito.doReturn(toolbar).when(view).findViewById(R.id.toolbar);
         Mockito.doReturn(nameTextView).when(view).findViewById(R.id.hotel_name);
         Mockito.doReturn(priceTextView).when(view).findViewById(R.id.hotel_price);

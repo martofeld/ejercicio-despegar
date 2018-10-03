@@ -37,7 +37,7 @@ class SuccessObserver implements Observer<HotelExpansion> {
     @Override
     public void onChanged(@Nullable HotelExpansion hotelExpansion) {
         DetailFragment fragment;
-        //Asign and check at the same time since reference could be collected
+        //Assign and check at the same time since reference could be collected
         if ((fragment = this.fragment.get()) == null){
             return;
         }
@@ -67,11 +67,10 @@ class SuccessObserver implements Observer<HotelExpansion> {
         ProgressBar pb = v.findViewById(R.id.hotel_location_placeholder);
         pb.setVisibility(View.GONE);
         loadImage(url, location, pb.getIndeterminateDrawable());
-
     }
 
 
-    private void loadImage(String url, ImageView location, Drawable progressDrawable){
+    /* default */ void loadImage(String url, ImageView location, Drawable progressDrawable){
         location.setVisibility(View.VISIBLE);
         Glide.with(location.getContext())
                 .load(url)
