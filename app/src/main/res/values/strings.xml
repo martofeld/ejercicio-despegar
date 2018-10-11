@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Despegar</string>
+    <string name="transition_name_template" translatable="false">%1$s_%2$s</string>
+    <string name="maps_key" translatable="false">AIzaSyC-nb2DZh-TGlUNC9s-pzuI1rkjVvUiDoY</string>
+    <string name="error_icon">Icono de error</string>
+    <string name="retry">Reintentar</string>
+    <string name="generic_error">Lo sentimos, ocurrio un error inesperado</string>
+    <string name="server_error">Lo sentimos, ocurrio un error con la informacion</string>
+    <string name="description">Descripcion</string>
+    <string name="amenities">Amenities</string>
+    <string name="location">Ubicacion</string>
+    <string name="reviews">Comentarios</string>
+    <string name="no_reviews">Lo sentimos, no hay comentarios para este hotel</string>
+    <string name="hotel_price">Precio por noche: %1$s%2$d</string>
+    <string name="no_description">Lo sentimos pero no tenemos descripcion</string>
 </resources>

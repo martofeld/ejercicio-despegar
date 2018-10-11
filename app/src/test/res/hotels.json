@@ -1,0 +1,365 @@
+{
+  "meta_data": {
+    "message": "Getting hotels.",
+    "code": "OK",
+    "uow": "nKlvNQlOuf-qc-service-dummy-00-c5hNDJAT7q"
+  },
+  "items": [
+    {
+      "id": "364650",
+      "stars": 4,
+      "name": "DoubleTree by Hilton Ocean Pnt Rsrt & Spa North Miami Beach",
+      "address": "17375 Collins Avenue",
+      "main_picture": "http://ar.staticontent.com/media/pictures/7aca8010-51f6-4767-b484-e4c024df79ec",
+      "rating": 7.86,
+      "amenities": [
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 2999,
+        "best": 2999
+      }
+    },
+    {
+      "id": "520423",
+      "stars": 4,
+      "name": "Grand Beach Hotel Surfside",
+      "address": "9449 Collins Avenue, Surfside, Miami Beach 33139, Florida United States",
+      "main_picture": "http://ar.staticontent.com/media/pictures/1df13d77-bc9e-414d-9e3f-856bbd40cb5d",
+      "rating": 8.64,
+      "amenities": [
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 4620,
+        "best": 4620
+      }
+    },
+    {
+      "id": "297729",
+      "stars": 3,
+      "name": "Hyatt house Miami Airport",
+      "address": "5710 Blue Lagoon Dr",
+      "main_picture": "http://ar.staticontent.com/media/pictures/8aa674a1-1190-4e7f-aee1-824317ce99b2",
+      "rating": 8.39,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 2186,
+        "best": 2186
+      }
+    },
+    {
+      "id": "298772",
+      "stars": 3,
+      "name": "Hampton Inn Miami Airport West",
+      "address": "3620 NW 79th Avenue",
+      "main_picture": "http://ar.staticontent.com/media/pictures/fe40b971-d1c8-4b6d-9303-b8cd0330e224",
+      "rating": 8.04,
+      "amenities": [
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 1453,
+        "best": 1453
+      }
+    },
+    {
+      "id": "312501",
+      "stars": 3,
+      "name": "Holiday Inn Port of Miami Downtown",
+      "address": "340 Biscayne Blvd",
+      "main_picture": "http://ar.staticontent.com/media/pictures/172b6ccd-a6a1-4283-8b5e-482a1f760798",
+      "rating": 8.1,
+      "amenities": [
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 2642,
+        "best": 2642
+      }
+    },
+    {
+      "id": "300050",
+      "stars": 3,
+      "name": "Homewood Suites Miami Airport Blue Lagoon",
+      "address": "5500 Blue Lagoon Drive",
+      "main_picture": "http://ar.staticontent.com/media/pictures/8eb32f53-8e8e-4772-8a82-a77b195f336d",
+      "rating": 8.36,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 1995,
+        "best": 1995
+      }
+    },
+    {
+      "id": "299903",
+      "stars": 3,
+      "name": "Residence Inn by Marriott Miami Aventura Mall",
+      "address": "19900 W Country Club Dr",
+      "main_picture": "http://ar.staticontent.com/media/pictures/5f2e221a-12ad-48f0-aef5-b16b55b228c8",
+      "rating": 8.7,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 2677,
+        "best": 2677
+      }
+    },
+    {
+      "id": "297689",
+      "stars": 3,
+      "name": "Best Western Plus Miami Airport West Inn & Suites",
+      "address": "3875 NORTH WEST 107TH AVENUE ",
+      "main_picture": "http://ar.staticontent.com/media/pictures/8d13a523-f855-4c03-852a-05bffba46c3b",
+      "rating": 7.97,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 1909,
+        "best": 1909
+      }
+    },
+    {
+      "id": "364661",
+      "stars": 3,
+      "name": "Extended Stay America - Miami - Airport - Doral - 25th St",
+      "address": "7750 Nw 25th St",
+      "main_picture": "http://ar.staticontent.com/media/pictures/ace8ca02-cfeb-40e9-8815-3422ca5a53dc",
+      "rating": 7.15,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 1332,
+        "best": 1332
+      }
+    },
+    {
+      "id": "298568",
+      "stars": 2,
+      "name": "Extended Stay America - Miami - Airport - Doral",
+      "address": "8720 Nw 33rd St",
+      "main_picture": "http://ar.staticontent.com/media/pictures/13ac4cb5-9af7-4007-9bf4-bb096ed84e5d",
+      "rating": 7.51,
+      "amenities": [
+        {
+          "id": "BREAKFST",
+          "description": "Desayuno"
+        },
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PARKING",
+          "description": "Estacionamiento Gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 1332,
+        "best": 1332
+      }
+    },
+    {
+      "id": "297794",
+      "stars": 4,
+      "name": "Sheraton Miami Airport Hotel & Executive Meeting Center",
+      "address": "3900 NW 21st St, Miami, FL 33142",
+      "main_picture": "http://ar.staticontent.com/media/pictures/5f2e64b5-6cfc-4bb0-bddc-6b8733f7d8d6",
+      "rating": 7.97,
+      "amenities": [
+        {
+          "id": "WIFI",
+          "description": "WIFI gratis"
+        },
+        {
+          "id": "PISCN",
+          "description": "Piscina al Aire Libre (Todo el Año)"
+        }
+      ],
+      "price": {
+        "currency": {
+          "code": "ARS",
+          "mask": "$",
+          "ratio": 0.1047668900394894
+        },
+        "final_price": false,
+        "base": 2079,
+        "best": 2079
+      }
+    }
+  ]
+}

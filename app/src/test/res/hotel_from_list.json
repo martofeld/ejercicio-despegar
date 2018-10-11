@@ -1,0 +1,28 @@
+{
+  "id": "364650",
+  "stars": 4,
+  "name": "DoubleTree by Hilton Ocean Pnt Rsrt & Spa North Miami Beach",
+  "address": "17375 Collins Avenue",
+  "main_picture": "http://ar.staticontent.com/media/pictures/7aca8010-51f6-4767-b484-e4c024df79ec",
+  "rating": 7.86,
+  "amenities": [
+    {
+      "id": "WIFI",
+      "description": "WIFI gratis"
+    },
+    {
+      "id": "PISCN",
+      "description": "Piscina al Aire Libre (Todo el Año)"
+    }
+  ],
+  "price": {
+    "currency": {
+      "code": "ARS",
+      "mask": "$",
+      "ratio": 0.1047668900394894
+    },
+    "final_price": false,
+    "base": 2999,
+    "best": 2999
+  }
+}

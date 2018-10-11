@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/review_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/review_positive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_review_positive"
+        android:drawableLeft="@drawable/ic_review_positive"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        tools:text="Muy bueno, volveria" />
+
+    <TextView
+        android:id="@+id/review_negative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_review_negative"
+        android:drawableLeft="@drawable/ic_review_negative"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        tools:text="Le faltaba un poco de limpieza" />
+
+    <TextView
+        android:id="@+id/review_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        tools:text="Martin Feldsztejn" />
+
+</LinearLayout>

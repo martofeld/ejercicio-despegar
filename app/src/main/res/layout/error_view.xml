@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.RelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/black"
+        tools:text="@string/generic_error" />
+
+    <ImageView
+        android:id="@+id/error_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_above="@id/error_text"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/error_icon"
+        android:src="@drawable/ic_connection_error" />
+
+    <Button
+        android:id="@+id/error_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/error_text"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Reintentar" />
+
+</merge>
